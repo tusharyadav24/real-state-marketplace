@@ -25,6 +25,9 @@ module.exports.loginForm=(req,res)=>{
 module.exports.login=async(req,res)=>{
    req.flash("success","welcome back to wanderlust");
    let redirectUrl=res.locals.redirectUrl || "/listings";
+   if (redirectUrl === "/login") {
+      redirectUrl = "/listings";
+    }
    res.redirect(redirectUrl);
 };
 module.exports.logout=(req,res,next)=>{
