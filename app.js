@@ -18,6 +18,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const dbUrl=process.env.ATLASDB_URL;
+app.use(express.urlencoded({ extended: true }));
+app.use(flash());
 const store=MongoStore.create({
   mongoUrl:dbUrl,
   crypto:{
@@ -44,9 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
-
 app.use(session(sessionOptions));
-app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));

@@ -4,9 +4,9 @@
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
       <div class="card border border-light-subtle shadow-sm rounded-4 p-4 p-md-5 bg-white">
-        <h2 class="fw-bold text-center text-dark mb-4">Login</h2>
+        <h2 class="fw-bold text-center text-dark mb-4">Sign Up on Wanderlust</h2>
 
-        <form action="/login" method="post" class="needs-validation" novalidate>
+        <form action="/signup" method="POST" class="needs-validation" novalidate>
           <div class="form-floating mb-3">
             <input 
               type="text" 
@@ -17,9 +17,21 @@
               required 
             />
             <label for="username">Username</label>
-            <div class="invalid-feedback">
-              Please enter your username.
-            </div>
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please choose a username.</div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input 
+              type="email" 
+              name="email" 
+              id="email" 
+              class="form-control rounded-3 shadow-none" 
+              placeholder="name@example.com" 
+              required 
+            />
+            <label for="email">Email address</label>
+            <div class="invalid-feedback">Please enter a valid email address.</div>
           </div>
 
           <div class="form-floating mb-4">
@@ -32,19 +44,17 @@
               required 
             />
             <label for="password">Password</label>
-            <div class="invalid-feedback">
-              Please enter your password.
-            </div>
+            <div class="invalid-feedback">Please enter a password.</div>
           </div>
 
           <button class="btn btn-dark w-100 py-2 rounded-3 fw-semibold shadow-sm">
-            Log In
+            Sign Up
           </button>
         </form>
 
         <div class="text-center mt-4 pt-2 border-top">
           <small class="text-muted">
-            Don't have an account? <a href="/signup" class="text-decoration-none fw-semibold text-dark">Sign up</a>
+            Already have an account? <a href="/login" class="text-decoration-none fw-semibold text-dark">Log In</a>
           </small>
         </div>
       </div>

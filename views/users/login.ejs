@@ -1,50 +1,48 @@
 <% layout("/layouts/boilerplate") %>
 
-<div class="row mt-5 mb-5">
-  <div class="col-12 col-md-8 col-lg-5 mx-auto">
-    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
-      <h2 class="fw-bold text-center text-dark mb-4">Login</h2>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+      <div class="card border border-light-subtle shadow-sm rounded-4 p-4 p-md-5 bg-white">
+        <h2 class="fw-bold text-center text-dark mb-4">Welcome Back</h2>
 
-      <form action="/login" method="post" class="needs-validation" novalidate>
-        <div class="mb-3">
-          <label for="username" class="form-label fw-semibold">Username</label>
-          <input 
-            type="text" 
-            name="username" 
-            id="username" 
-            class="form-control rounded-3 shadow-none py-2" 
-            placeholder="Enter username" 
-            required 
-          />
-          <div class="invalid-feedback">
-            Please enter your username.
+        <form action="/login" method="POST" class="needs-validation" novalidate>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              name="username" 
+              id="username" 
+              class="form-control rounded-3 shadow-none" 
+              placeholder="Username" 
+              required 
+            />
+            <label for="username">Username</label>
+            <div class="invalid-feedback">Please enter your username.</div>
           </div>
-        </div>
 
-        <div class="mb-4">
-          <label for="password" class="form-label fw-semibold">Password</label>
-          <input 
-            type="password" 
-            name="password" 
-            id="password" 
-            class="form-control rounded-3 shadow-none py-2" 
-            placeholder="Enter password" 
-            required 
-          />
-          <div class="invalid-feedback">
-            Please enter your password.
+          <div class="form-floating mb-4">
+            <input 
+              type="password" 
+              name="password" 
+              id="password" 
+              class="form-control rounded-3 shadow-none" 
+              placeholder="Password" 
+              required 
+            />
+            <label for="password">Password</label>
+            <div class="invalid-feedback">Please enter your password.</div>
           </div>
+
+          <button class="btn btn-dark w-100 py-2 rounded-3 fw-semibold shadow-sm">
+            Log In
+          </button>
+        </form>
+
+        <div class="text-center mt-4 pt-2 border-top">
+          <small class="text-muted">
+            Don't have an account? <a href="/signup" class="text-decoration-none fw-semibold text-dark">Sign Up</a>
+          </small>
         </div>
-
-        <button class="btn btn-success w-100 py-2 rounded-3 fw-semibold shadow-sm">
-          Login
-        </button>
-      </form>
-
-      <div class="text-center mt-3">
-        <small class="text-muted">
-          Don't have an account? <a href="/signup" class="text-decoration-none fw-semibold text-success">Sign up</a>
-        </small>
       </div>
     </div>
   </div>
