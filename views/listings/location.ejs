@@ -1,17 +1,58 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-<% for(listing of searchedLocation){%>
-        <div class="my-card col">
-           <img src="<%=listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-            <div class="card-body">
-           <p class="card-text">
-        <b><%=listing.title %></b>
-        <br>
-        &#8377;<%=listing.price%>/night
-    </p>
-  </div>
- </div>
-<%} %>
+
+<div class="container-fluid px-md-5 my-4">
+  <% if (!searchedLocation || searchedLocation.length === 0) { %>
+    <div class="text-center py-5">
+      <div class="alert alert-light border shadow-sm d-inline-block px-5 py-4 rounded-4">
+        <i class="fa-solid fa-map-location-dot fs-1 text-secondary mb-3 d-block"></i>
+        <h4 class="fw-bold text-dark">No Listings Found</h4>
+        <p class="text-muted mb-3">Is location ke liye abhi koi property available nahi hai.</p>
+        <a href="/listings" class="btn btn-outline-dark rounded-pill px-4">
+          View All Listings
+        </a>
+      </div>
     </div>
-</body>
+  <% } else { %>
+    <h4 class="fw-bold mb-4">Search Results</h4>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g-4">
+      <% for (let listing of searchedLocation) { %>
+        <div class="col">
+          <a href="/listings/<%= listing._id %>" class="text-decoration-none text-reset">
+            <div class="card h-100 border-0 bg-transparent">
+              <div class="position-relative overflow-hidden rounded-4">
+                <img 
+                  src="<%= listing.image.url %>" 
+                  class="card-img-top w-100" 
+                  alt="<%= listing.title %>"
+                  style="height: 18rem; object-fit: cover;"
+                  loading="lazy"
+                >
+              </div>
+              <div class="card-body px-1 pt-3 pb-0">
+                <h6 class="card-title fw-bold text-dark text-truncate mb-1">
+                  <%= listing.title %>
+                </h6>
+
+                <% if (listing.location || listing.country) { %>
+                  <p class="text-muted small mb-1 text-truncate">
+                    <i class="fa-solid fa-location-dot text-danger me-1"></i>
+                    <%= listing.location %><% if (listing.location && listing.country) { %>, <% } %><%= listing.country %>
+                  </p>
+                <% } %>
+
+                <p class="card-text mt-1 mb-0">
+                  <span class="fw-bold text-dark fs-6">
+                    &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "0" %>
+                  </span>
+                  <span class="text-secondary small"> / night</span>
+                </p>
+              </div>
+
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  <% } %>
+</div>

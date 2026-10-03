@@ -1,57 +1,112 @@
-<%layout("/layouts/boilerplate") %>
-<body>
-    <div class="row">
-        <div class="col-8 offset-2">
-    <h2>edit you listing</h2>
-    <form action="/listings/<%=listing._id %>?_method=put" method="post" novalidate class="needs-validation" enctype="multipart/form-data">
-        <div class="mb-3">
-            <label for="title" class="form-lable"><b>title</b></label>
-            <input type="text" name="listing[title]" value="<%=listing.title %>" class="form-control required">
-            <div class="valid-feedback">
-                title looks good
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="description" class="form-lable"><b>description</b></label>
-            <textarea name="listing[description]" class="form-control" ><%=listing.description %></textarea >
-                <div class="invalid-feedback">
-                    enter valid description
-                </div>
-        </div>
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-4 mb-5">
+  <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <h3 class="fw-bold mb-4 text-dark">Edit Your Listing</h3>
+
+    <form
+      action="/listings/<%= listing._id %>?_method=PUT"
+      method="POST"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
-        Original listing image <br>
-        <img src="<%= listing.image.url %>" style="height: 200px; width: 400px;">
+        <label for="title" class="form-label fw-semibold">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          class="form-control rounded-3 shadow-none"
+          required
+        />
+        <div class="valid-feedback">Title looks good!</div>
+        <div class="invalid-feedback">Please provide a valid title.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label fw-semibold">Description</label>
+        <textarea
+          id="description"
+          name="listing[description]"
+          rows="4"
+          class="form-control rounded-3 shadow-none"
+          required
+        ><%= listing.description %></textarea>
+        <div class="invalid-feedback">Please enter a valid description.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-semibold d-block">Original Listing Image</label>
+        <div class="rounded-3 overflow-hidden border shadow-sm" style="max-width: 320px;">
+          <img
+            src="<%= listing.image.url %>"
+            class="img-fluid w-100"
+            style="height: 190px; object-fit: cover;"
+            alt="Current listing image"
+          />
         </div>
-        <div class="mb-3">
-            <label for="image" class="form-lable"><b>Upload New image</b></label>
-            <input type="file" name="listing[image]" class="form-control" required>
-            <div class="invalid-feedback">
-            </div>
-        </div> 
-        <div class="mb-3">
-            <label for="price" class="form-lable"><b>price</b></label>
-            <input type="number" name="listing[price]" value="<%=listing.price %>" class="form-control" required>
-            <div class="invalid-feedback">
-                enter valid price
-            </div>
-        </div>           
-         <div class="mb-3">
-             <label for="location" class="form-lable"><b>location</b></label>
-             <input type="text" name="listing[location]" value="<%=listing.location %>" class="form-control" required>
-             <div class="invalid-feedback">
-                enter valid location
-             </div>
-         </div>
-        <div class="mb-3">
-             <label for="country" class="form-lable"><b>country</b></label>
-             <input type="text" name="listing[country]" value="<%=listing.country %>" class="form-control" required>
-             <div class="invalid-feedback">
-                enter valid country
-             </div>
-        </div>  
-  
-        <button class="btn btn-dark edit-btn mb-4">edit</button>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label fw-semibold">Upload New Image</label>
+        <input
+          type="file"
+          id="image"
+          name="listing[image]"
+          class="form-control rounded-3 shadow-none"
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label fw-semibold">Price</label>
+          <div class="input-group">
+            <span class="input-group-text bg-light border-end-0 rounded-start-3">&#8377;</span>
+            <input
+              type="number"
+              id="price"
+              name="listing[price]"
+              value="<%= listing.price %>"
+              class="form-control rounded-end-3 shadow-none"
+              min="0"
+              required
+            />
+            <div class="invalid-feedback">Enter a valid price.</div>
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label fw-semibold">Country</label>
+          <input
+            type="text"
+            id="country"
+            name="listing[country]"
+            value="<%= listing.country %>"
+            class="form-control rounded-3 shadow-none"
+            required
+          />
+          <div class="invalid-feedback">Country name is required.</div>
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="location" class="form-label fw-semibold">Location</label>
+        <input
+          type="text"
+          id="location"
+          name="listing[location]"
+          value="<%= listing.location %>"
+          class="form-control rounded-3 shadow-none"
+          required
+        />
+        <div class="invalid-feedback">Location must be valid.</div>
+      </div>
+
+      <button class="btn btn-dark w-100 py-2 fw-semibold rounded-3 edit-btn shadow-sm">
+        Save Changes
+      </button>
     </form>
-        </div>
-    </div>
-</body>
+  </div>
+</div>

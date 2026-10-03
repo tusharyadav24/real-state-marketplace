@@ -1,19 +1,53 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
-<% for(listing of allListings){%>
-    <a href="/listings/<%=listing._id %>" class="listing-link">
-        <div class="my-card col">
-           <img src="<%=listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;">
-            <div class="card-body">
-           <p class="card-text">
-        <b><%=listing.title %></b>
-        <br>
-        &#8377;<%=listing.price%>/night
-    </p>
+
+<div class="container-fluid px-md-5 my-4">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g-4">
+    <% for(let listing of allListings) { %>
+      <div class="col">
+        <a href="/listings/<%= listing._id %>" class="text-decoration-none text-reset">
+          <div class="card h-100 border-0 listing-card bg-transparent">
+            <div class="card-img-wrapper position-relative overflow-hidden rounded-4">
+              <img 
+                src="<%= listing.image.url %>" 
+                class="card-img-top w-100" 
+                alt="<%= listing.title %>"
+                style="height: 19rem; object-fit: cover;"
+                loading="lazy"
+              >
+              <!-- Optional subtle overlay on hover -->
+              <div class="card-img-overlay p-3 d-flex justify-content-end align-items-start">
+                <span class="badge bg-light text-dark shadow-sm rounded-pill px-2 py-1 small">
+                  <i class="fa-regular fa-heart"></i>
+                </span>
+              </div>
+            </div>
+            <div class="card-body px-1 pt-3 pb-0">
+              <div class="d-flex justify-content-between align-items-start">
+                <h6 class="card-title fw-bold text-dark text-truncate mb-1" style="max-width: 85%;">
+                  <%= listing.title %>
+                </h6>
+                <% if(listing.location) { %>
+                  <span class="text-muted small">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </span>
+                <% } %>
+              </div>
+
+              <% if(listing.location || listing.country) { %>
+                <p class="text-muted small mb-1 text-truncate">
+                  <%= listing.location %>, <%= listing.country %>
+                </p>
+              <% } %>
+              <p class="card-text mt-1 mb-0">
+                <span class="fw-bold text-dark fs-6">
+                  &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "0" %>
+                </span>
+                <span class="text-secondary small"> / night</span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
   </div>
- </div>
-    </a>
-<%} %>
-    </div>
-</body>
+</div>

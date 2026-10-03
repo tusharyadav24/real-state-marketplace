@@ -1,24 +1,53 @@
 <% layout("/layouts/boilerplate") %>
-    <div class="row">
-        <div class="col-6 offset-2">
-            <h1>Sign Up to  wanderlust</h1>
-            <form action="/signup" method="post" class="needs-validation" novalidate>
-                <div class="mb-3">
-                    <label for="username" class="form-lable"><b>username</b></label>
-                    <input type="text" name="username" class="form-control" required >
-                  <div class="valid-feedback">
-                    looks good!
-                  </div>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-lable"><b>Email</b></label>
-                    <input type="text" name="email" class="form-control" required >
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-lable"><b>Password</b></label>
-                    <input type="password" name="password" class="form-control" id="password" required >
-                </div>
-                <button class="btn btn-success">Sign Up</button>
-            </form>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+      <div class="card border border-light-subtle shadow-sm rounded-4 p-4 p-md-5 bg-white">
+        <h2 class="fw-bold text-center text-dark mb-4">Login</h2>
+
+        <form action="/login" method="post" class="needs-validation" novalidate>
+          <div class="form-floating mb-3">
+            <input 
+              type="text" 
+              name="username" 
+              id="username" 
+              class="form-control rounded-3 shadow-none" 
+              placeholder="Username" 
+              required 
+            />
+            <label for="username">Username</label>
+            <div class="invalid-feedback">
+              Please enter your username.
+            </div>
+          </div>
+
+          <div class="form-floating mb-4">
+            <input 
+              type="password" 
+              name="password" 
+              id="password" 
+              class="form-control rounded-3 shadow-none" 
+              placeholder="Password" 
+              required 
+            />
+            <label for="password">Password</label>
+            <div class="invalid-feedback">
+              Please enter your password.
+            </div>
+          </div>
+
+          <button class="btn btn-dark w-100 py-2 rounded-3 fw-semibold shadow-sm">
+            Log In
+          </button>
+        </form>
+
+        <div class="text-center mt-4 pt-2 border-top">
+          <small class="text-muted">
+            Don't have an account? <a href="/signup" class="text-decoration-none fw-semibold text-dark">Sign up</a>
+          </small>
         </div>
+      </div>
     </div>
+  </div>
+</div>

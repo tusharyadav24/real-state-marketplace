@@ -1,28 +1,55 @@
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-solid fa-globe"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md bg-white border-bottom sticky-top py-2 shadow-sm">
+  <div class="container-fluid px-md-5">
+    <a class="navbar-brand text-danger d-flex align-items-center gap-2 me-3" href="/listings">
+      <i class="fa-solid fa-globe fs-2"></i>
+    </a>
+
+    <button 
+      class="navbar-toggler border-0 shadow-none" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarNavAltMarkup" 
+      aria-controls="navbarNavAltMarkup" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link" href="/listings">Explore</a>
+      <div class="navbar-nav align-items-md-center">
+        <a class="nav-link fw-semibold text-dark px-3" href="/listings">Explore</a>
       </div>
-      <div class=" ms-auto ">
-        <form action="/listings/search" method="get" class="d-flex flex-row gap-3">
-          <input type="text" class="form-control" placeholder="Search here" name="location">
-          <button class="btn btn-danger">Search</button>
-        </form>
-      </div>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Add your Listing.</a>
-        <%if(!currUser){%>
-          <a class="nav-link " href="/login"><b>Log In</b></a>
-          <a class="nav-link" href="/signup"><b>sign Up</b></a>           
-        <%}%>
-        <%if(currUser){%>
-          <a class="nav-link" href="/logout">Log Out</a>
-        <%}%>
+
+      <form action="/listings/search" method="get" class="d-flex align-items-center mx-md-auto my-2 my-md-0" role="search">
+        <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+          <input 
+            type="text" 
+            class="form-control border-0 px-4 shadow-none fs-6" 
+            placeholder="Search destinations..." 
+            name="location" 
+            required
+          />
+          <button class="btn btn-danger px-3 d-flex align-items-center gap-2" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span class="d-none d-lg-inline fw-semibold small">Search</span>
+          </button>
+        </div>
+      </form>
+
+      <div class="navbar-nav ms-md-auto align-items-md-center gap-2 mt-2 mt-md-0">
+        <a class="nav-link fw-semibold text-dark px-3 py-1" href="/listings/new">
+          Add your Listing
+        </a>
+
+        <% if (!currUser) { %>
+          <a class="btn btn-outline-dark rounded-pill px-3 py-1 fw-semibold small" href="/login">Log In</a>
+          <a class="btn btn-danger rounded-pill px-3 py-1 fw-semibold text-white small" href="/signup">Sign Up</a>
+        <% } %>
+
+        <% if (currUser) { %>
+          <a class="btn btn-outline-danger rounded-pill px-3 py-1 fw-semibold small" href="/logout">Log Out</a>
+        <% } %>
       </div>
     </div>
   </div>
