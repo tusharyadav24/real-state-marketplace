@@ -16,21 +16,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse bg-white p-3 p-md-0 rounded-bottom-4 shadow-sm shadow-md-none" id="navbarNavAltMarkup">
       <div class="navbar-nav align-items-md-center">
         <a class="nav-link fw-semibold text-dark px-3" href="/listings">Explore</a>
       </div>
 
-      <form action="/listings/search" method="get" class="d-flex align-items-center mx-md-auto my-2 my-md-0" role="search">
-        <div class="input-group shadow-sm rounded-pill overflow-hidden border">
+      <form action="/listings/search" method="get" class="d-flex align-items-center mx-md-auto my-3 my-md-0 w-100 w-md-auto" role="search">
+        <div class="input-group shadow-sm rounded-pill overflow-hidden border p-1 bg-white w-100">
           <input 
             type="text" 
-            class="form-control border-0 px-4 shadow-none fs-6" 
+            class="form-control border-0 px-3 shadow-none fs-6 bg-transparent" 
             placeholder="Search destinations..." 
             name="location" 
             required
           />
-          <button class="btn btn-danger px-3 d-flex align-items-center gap-2" type="submit">
+          <button class="btn btn-danger rounded-pill px-3 d-flex align-items-center gap-2 shadow-sm" type="submit">
             <i class="fa-solid fa-magnifying-glass"></i>
             <span class="d-none d-lg-inline fw-semibold small">Search</span>
           </button>
@@ -38,17 +38,23 @@
       </form>
 
       <div class="navbar-nav ms-md-auto align-items-md-center gap-2 mt-2 mt-md-0">
-        <a class="nav-link fw-semibold text-dark px-3 py-1" href="/listings/new">
-          Add your Listing
+        <a class="nav-link fw-semibold text-dark px-3 py-2 text-nowrap" href="/listings/new">
+          Host your place
         </a>
 
         <% if (!currUser) { %>
-          <a class="btn btn-outline-dark rounded-pill px-3 py-1 fw-semibold small" href="/login">Log In</a>
-          <a class="btn btn-danger rounded-pill px-3 py-1 fw-semibold text-white small" href="/signup">Sign Up</a>
+          <a class="btn btn-outline-dark rounded-pill px-3 py-2 fw-semibold small shadow-sm text-nowrap" href="/login">
+            Log In
+          </a>
+          <a class="btn btn-danger rounded-pill px-3 py-2 fw-semibold text-white small shadow-sm text-nowrap" href="/signup">
+            Sign Up
+          </a>
         <% } %>
 
         <% if (currUser) { %>
-          <a class="btn btn-outline-danger rounded-pill px-3 py-1 fw-semibold small" href="/logout">Log Out</a>
+          <a class="btn btn-outline-danger rounded-pill px-3 py-2 fw-semibold small shadow-sm text-nowrap" href="/logout">
+            Log Out
+          </a>
         <% } %>
       </div>
     </div>
