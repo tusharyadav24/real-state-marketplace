@@ -95,3 +95,83 @@ body{
     background-color: rgb(237, 106, 106) !important;
     border: none !important;
 }
+/* Filters Bar */
+#filters {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+#filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter {
+  text-align: center;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.filter:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.filter i {
+  font-size: 1.25rem;
+}
+
+.filter p {
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+  background: transparent;
+  transition: transform 0.25s ease;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+}
+
+.listing-card .card-img-top {
+  border-radius: 1rem !important;
+  width: 100%;
+  height: 18rem;
+  object-fit: cover;
+  transition: filter 0.2s ease;
+}
+
+.listing-card:hover .card-img-top {
+  filter: brightness(0.95);
+}
+
+.listing-card .card-body {
+  padding: 0.75rem 0.25rem 0;
+}
+
+.listing-card .card-text {
+  font-size: 0.95rem;
+  color: #212529;
+  line-height: 1.4;
+}
+
+.listing-card .card-text b {
+  font-weight: 600;
+}
